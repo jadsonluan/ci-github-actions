@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieService should list movies 1`] = `
+Array [
+  Movie {
+    "id": 1,
+    "name": "Shrek",
+  },
+  Movie {
+    "id": 2,
+    "name": "Shrek 2",
+  },
+]
+`;
