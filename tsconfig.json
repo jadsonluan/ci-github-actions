@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "baseUrl": "src/"
+  },
+  "include": ["./**/*.ts", "./**/*"],
+  "exclude": ["./node_modules/*", "dist"]
+}
