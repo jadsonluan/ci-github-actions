@@ -2,12 +2,11 @@ import express from 'express'
 import http from 'http'
 import moviesRouter from './routes/movies'
 import db from './db'
-import DatabaseManager from './db/DatabaseManager'
 
 const PORT = 8080
 
 async function setup() {
-  await DatabaseManager.initDB()
+  await db.init()
 
   const app = express()
   const server = http.createServer(app)

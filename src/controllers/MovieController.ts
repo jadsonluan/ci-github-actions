@@ -37,8 +37,6 @@ async function update(req: Request, res: Response, _next: NextFunction) {
   const { movie } = req.body
   const { id } = req.params
 
-  console.log(id)
-
   try {
     const updated = await MovieService.update(id, movie);
     res.status(201).send({ movie: updated })

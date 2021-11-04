@@ -1,4 +1,4 @@
-import { createConnection } from "typeorm";
+import { createConnection, getConnection } from "typeorm";
 import { DB_ENV, NODE_ENV } from "../config/environment";
 import entities from "../entities";
 
@@ -24,4 +24,8 @@ export default {
       logging: DB_ENV.DATABASE_LOG,
       useUTC: true,
     }),
+    close: () => {
+      const connection = getConnection(NODE_ENV)
+      return connection?.close()
+    }
 };
