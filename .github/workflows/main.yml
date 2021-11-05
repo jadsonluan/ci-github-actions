@@ -34,7 +34,10 @@ jobs:
         run: yarn
         
       - name: Create .env from secrets
-        uses: alekangelov/secret-envfile@v1
+        uses: shine1594/secrets-to-env-action@master
+        with:
+          secrets: ${{ toJSON(secrets) }}
+          secrets_env: production
         
       - name: Check .env
         run: cat .env
