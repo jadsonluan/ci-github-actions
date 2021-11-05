@@ -55,11 +55,9 @@ jobs:
         run: yarn --prefer-offline
         
       - name: Create .env file
-        env:
-          secrets: ${{ toJson(secrets) }}
         run: |
           touch .env
-          echo "${secrets}" | jq -r 'to_entries[] | (.key | ascii_upcase) + "=" + .value' > .env  
+          echo "${{ toJson(secrets) }}" | jq -r 'to_entries[] | (.key | ascii_upcase) + "=" + .value' > .env  
         
       - name: Run docker
         run: yarn docker:up
