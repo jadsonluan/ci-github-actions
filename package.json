@@ -15,12 +15,16 @@
     "migration:create": "typeorm migration:create -d src/migrations -n",
     "docker:up": "docker-compose -f 'docker-compose.yml' up -d --build postgres",
     "docker:down": "docker-compose -f 'docker-compose.yml' down",
-    "test:unit": "yarn run pretest && jest --config=src/__tests__/unit/jest.config.js --runInBand --detectOpenHandles --forceExit"
+    "test:unit": "yarn run pretest && jest --config=src/__tests__/unit/jest.config.js --runInBand --detectOpenHandles --forceExit",
+    "test:functional": "yarn run pretest && jest --config=src/__tests__/functional/jest.config.js --runInBand --detectOpenHandles --forceExit",
+    "test": "yarn test:unit && yarn test:functional"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jest-environment-node": "^27.3.1",
     "pg": "^8.7.1",
+    "supertest": "^6.1.6",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.11.0",
     "typeorm": "^0.2.38"
