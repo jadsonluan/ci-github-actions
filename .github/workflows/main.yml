@@ -41,5 +41,8 @@ jobs:
           echo DATABASE_USER=${{ secrets.DATABASE_USER }} >> .env
           echo DATABASE_PORT=${{ secrets.DATABASE_PORT }} >> .env
         
-      - name: Check env
-        run: cat .env
+      - name: Run docker
+        run: yarn docker:up
+        
+      - name: Run tests
+        run: yarn test:unit
