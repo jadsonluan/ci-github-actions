@@ -54,18 +54,10 @@ jobs:
       - name: Install dependencies
         run: yarn --prefer-offline
         
-      - name: Test env loop
+      - name: Create .env file
         env:
           secrets: ${{ toJson(secrets) }}
-        run: echo $secrets          
-        
-      - name: Create .env file
-        run: |
-          touch .env
-          echo DATABASE_HOST=${{ secrets.DATABASE_HOST }} >> .env
-          echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
-          echo DATABASE_USER=${{ secrets.DATABASE_USER }} >> .env
-          echo DATABASE_PORT=${{ secrets.DATABASE_PORT }} >> .env
+        run: echo "${secrets}" | jq -r 'to_entries[] | (.key | ascii_upcase) + "=" + .value'   
         
       - name: Run docker
         run: yarn docker:up
