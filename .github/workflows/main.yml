@@ -32,8 +32,11 @@ jobs:
       - name: Install dependencies
         run: yarn
         
-      - name: .env From Secret
+      - name: Create .env from secrets
         uses: alekangelov/secret-envfile@v1
         
-      - name: Check files (include dot files)
-        run: ls -a
+      - name: Run docker
+        run: yarn docker:up
+        
+      - name: Run tests
+        run: yarn test:unit
