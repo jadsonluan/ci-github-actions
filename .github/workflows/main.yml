@@ -17,6 +17,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    environment: CI
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -35,8 +36,5 @@ jobs:
       - name: Create .env from secrets
         uses: alekangelov/secret-envfile@v1
         
-      - name: Run docker
-        run: yarn docker:up
-        
-      - name: Run tests
-        run: yarn test:unit
+      - name: Check .env
+        run: cat .env
