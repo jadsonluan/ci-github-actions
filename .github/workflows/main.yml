@@ -33,12 +33,14 @@ jobs:
       - name: Install dependencies
         run: yarn
         
-      - name: Create .env from secrets
-        uses: shine1594/secrets-to-env-action@master
-        with:
-          secrets: ${{ toJSON(secrets) }}
-          secrets_env: production
-      
+      - name: Create .env file
+        run: |
+          touch .env
+          echo DATABASE_HOST=${{ secrets.DATABASE_HOST }} > .env
+          echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} > .env
+          echo DATABASE_USER=${{ secrets.DATABASE_USER }} > .env
+          echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} > .env
+        
       - name: Check files
         run: ls -a
         
