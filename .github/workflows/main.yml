@@ -32,5 +32,13 @@ jobs:
       - name: Install dependencies
         run: yarn
         
+      - name: Create .env file
+        env:
+          secrets: ${{ secrets }}
+        run: |
+          for secret in $secrets; do
+            echo $secret
+          done;
+        
       - name: Check docker-compose version
         run: docker-compose --version
