@@ -33,6 +33,18 @@ jobs:
       - name: Build
         run: yarn build
         
+  test:
+    environment: CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.4.1
+        
+      - name: Install dependencies
+        run: yarn
+        
       - name: Create .env file
         run: |
           touch .env
@@ -46,3 +58,4 @@ jobs:
         
       - name: Run tests
         run: yarn test
+    
