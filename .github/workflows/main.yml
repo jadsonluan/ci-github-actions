@@ -38,6 +38,6 @@ jobs:
         with:
           secrets: ${{ toJSON(secrets) }}
           secrets_env: production
-        
-      - name: Check .env
-        run: cat .env
+      
+      - name: Run docker
+        run: yarn docker:up
