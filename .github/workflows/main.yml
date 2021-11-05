@@ -35,5 +35,5 @@ jobs:
       - name: .env From Secret
         uses: alekangelov/secret-envfile@v1
         
-      - name: Check .env
-        run: cat .env
+      - name: Check files
+        run: ls
