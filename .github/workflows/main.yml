@@ -57,7 +57,9 @@ jobs:
       - name: Create .env file
         env:
           secrets: ${{ toJson(secrets) }}
-        run: echo "${secrets}" | jq -r 'to_entries[] | (.key | ascii_upcase) + "=" + .value'   
+        run: |
+          touch .env
+          echo "${secrets}" | jq -r 'to_entries[] | (.key | ascii_upcase) + "=" + .value' > .env  
         
       - name: Run docker
         run: yarn docker:up
