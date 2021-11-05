@@ -41,12 +41,5 @@ jobs:
           echo DATABASE_USER=${{ secrets.DATABASE_USER }} > .env
           echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} > .env
         
-      - name: Check files
-        run: ls -a
-        
-      - name: Get env file
-        id: vars
-        run: echo ::set-output name=envfile::$(cat .env)
-        
-      - name: Test output
-        run: echo ${{ steps.vars.outputs.envfile }}
+      - name: Check env
+        run: cat .env
