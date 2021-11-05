@@ -39,5 +39,12 @@ jobs:
           secrets: ${{ toJSON(secrets) }}
           secrets_env: production
       
-      - name: Run docker
-        run: yarn docker:up
+      - name: Check files
+        run: ls -a
+        
+      - name: Get env file
+        id: vars
+        run: echo ::set-output name=envfile::$(cat .env)
+        
+      - name: Test output
+        run: echo ${{ steps.vars.outputs.envfile }}
